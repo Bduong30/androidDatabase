@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView quoteID = (TextView) findViewById(R.id.quoteTextID);
         setSupportActionBar(toolbar);
 
-        final Database quoteDb = Database.getSingleton(this.getApplicationContext());
+        new Database().execute();
 
 
 
@@ -33,14 +33,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int id = Integer.parseInt(quoteID.getText().toString());
-                String quote = quoteDb.getOneQuote(id).quotes;
-                if(quote != null) {
-                    System.out.println(quote);
-                }
-                else{
-                    System.out.println("Error there is no quote corresponding with the id number");
-                }
+
             }
         });
     }
